@@ -6,19 +6,19 @@ import { StepTwoComponent } from '../../components/step-two/step-two.component';
 import { StepThreeComponent } from '../../components/step-three/step-three.component';
 
 @NgModule({
-  imports: [
-    RouterModule.forChild([
-      {
-        path: '',
-        component: RegisterComponent,
-        children: [
-          { path: 'step-one', component: StepOneComponent },
-          { path: 'step-two', component: StepTwoComponent },
-          { path: 'step-three', component: StepThreeComponent },
-        ],
-      },
-    ]),
-  ],
-  exports: [RouterModule],
+    imports: [
+        RouterModule.forChild([
+            {
+                path: '',
+                component: RegisterComponent,
+                children: [
+                    { path: 'step-one', component: StepOneComponent },
+                    { path: 'step-two', component: StepTwoComponent },
+                    { path: 'step-three', component: StepThreeComponent },
+                ],
+            },
+        ]),
+    ],
+    exports: [RouterModule],
 })
 export class RegisterRoutingModule {}

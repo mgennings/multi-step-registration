@@ -10,19 +10,16 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    StepOneComponent,
-    StepTwoComponent,
-    StepThreeComponent,
-    RegisterComponent,
-    ConfirmComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        StepOneComponent,
+        StepTwoComponent,
+        StepThreeComponent,
+        RegisterComponent,
+        ConfirmComponent,
+    ],
+    imports: [BrowserModule, AppRoutingModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
