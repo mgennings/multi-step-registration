@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,7 @@ import { ConfirmComponent } from './pages/confirm/confirm.component';
         RegisterComponent,
         ConfirmComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule],
+    imports: [CommonModule, BrowserModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent],
 })

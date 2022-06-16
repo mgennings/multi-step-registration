@@ -1,1 +1,53 @@
-<p>register works!</p>
+<div class="container d-flex h-100">
+    <div class="row align-self-center">
+        <h1 class="text-center mt-4">Multi-Step Registration WizardBuild</h1>
+        <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 my-auto mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <div class="wizard">
+                        <ng-container *ngFor="let step of steps; let i = index">
+                            <a *ngIf="step.active" [routerLink]="step.link" routerLinkActive="active"
+                                [title]="step.title" (click)="goTo(i)">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                        role="progressbar" [ngStyle]="{'width': step.progress + '%'}"
+                                        [innerText]="step.progress + '%'">
+                                    </div>
+                                </div>
+                            </a>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <label for="input_name" class="form-label">Your Name:</label>
+                    <div id="input_name" class="input-group mb-3">
+                        <input type="text" class="form-control" id="input_name--first" placeholder="First">
+                        <input type="text" class="form-control" id="input_name--last" placeholder="Last">
+                    </div>
+                    <label for="input_company" class="form-label">Company:</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Company Name" id="input_company">
+                    </div>
+
+                    <label for="input_age" class="form-label">Age:</label>
+                    <div class="input-group mb-3">
+                        <select class="form-select" id="input_age" aria-label="Select your age range">
+                            <option selected>Choose...</option>
+                            <option value="1">Under 18</option>
+                            <option value="2">18-24 years old</option>
+                            <option value="3">25-34 years old</option>
+                            <option value="4">35-44 years old</option>
+                            <option value="5">45-54 years old</option>
+                            <option value="6">55-64 years old</option>
+                            <option value="7">65-74 years old</option>
+                            <option value="8">75 years or older</option>
+                        </select>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto my-4">
+                        <a routerLink="step-two" class="btn btn-primary">Continue</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
