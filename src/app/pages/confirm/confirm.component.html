@@ -157,17 +157,15 @@
                 </p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <button
-                    (click)="confirmForm.submit()"
-                    [class.disabled]="form.status !== 'VALID'"
-                    type="submit"
-                    class="btn btn-primary"
-                >
-                    Submit
-                </button>
-            </div>
+        <div class="d-grid gap-2">
+            <button
+                (click)="confirmForm.submit()"
+                [class.disabled]="form.status !== 'VALID'"
+                type="submit"
+                class="btn btn-primary"
+            >
+                Submit
+            </button>
         </div>
     </form>
 </div>
