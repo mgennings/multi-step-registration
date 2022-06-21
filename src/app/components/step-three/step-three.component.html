@@ -1,1 +1,91 @@
-<p>step-three works!</p>
+<div *ngIf="step.progress > 0" class="card-header">
+    <div class="wizard">
+        <a [routerLink]="step.route" routerLinkActive="active" [title]="step.title">
+            <div class="progress">
+                <div
+                    class="progress-bar progress-bar-striped progress-bar-animated"
+                    role="progressbar"
+                    [ngStyle]="{ width: step.progress + '%' }"
+                    [innerText]="step.progress + '%'"
+                ></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="card-body">
+    <div class="card-title">
+        <h3>{{ step.title }}</h3>
+    </div>
+    <p class="card-text">
+        {{ step.content }}
+    </p>
+    <div [formGroup]="form" (ngSubmit)="submitSubform()">
+        <div>
+            <label for="input_address">Address</label>
+            <div class="input-group mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="input_address"
+                    formControlName="street"
+                    placeholder="1234 Main St"
+                />
+            </div>
+            <label for="input_address--2">Address 2</label>
+            <div class="input-group mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="input_address--2"
+                    formControlName="unit"
+                    placeholder="Apartment, studio, or floor"
+                />
+            </div>
+            <label for="input_city">City</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="city" id="input_city" />
+            </div>
+            <label for="input_state">State</label>
+            <div class="input-group mb-3">
+                <select id="input_state" class="form-control" formControlName="state">
+                    <option selected>Choose...</option>
+                    <option *ngFor="let state of states" [innerText]="state"></option>
+                </select>
+            </div>
+            <label for="input_zip">Zip</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="zip" id="input_zip" />
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        Form status:
+                        <span
+                            [ngClass]="{
+                                'text-success': form.status === 'VALID',
+                                'text-danger': form.status === 'INVALID'
+                            }"
+                            >{{ form.status }}</span
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-grid gap-2 col-6 mx-auto my-4">
+                <button (click)="doChangeStep('prev')" routerLink="step-two" class="btn btn-secondary">Back</button>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto my-4">
+                <button
+                    type="submit"
+                    (click)="submitSubform(); doChangeStep('next')"
+                    routerLink="confirm"
+                    [class.disabled]="form.status !== 'VALID'"
+                    class="btn btn-primary"
+                >
+                    Continue
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

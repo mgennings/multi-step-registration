@@ -1,1 +1,101 @@
-<p>step-one works!</p>
+<div *ngIf="step.progress > 0" class="card-header">
+    <div class="wizard">
+        <a [routerLink]="step.route" routerLinkActive="active" [title]="step.title">
+            <div class="progress">
+                <div
+                    class="progress-bar progress-bar-striped progress-bar-animated"
+                    role="progressbar"
+                    [ngStyle]="{ width: step.progress + '%' }"
+                    [innerText]="step.progress + '%'"
+                ></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="card-body">
+    <div class="card-title">
+        <h3>{{ step.title }}</h3>
+    </div>
+    <p class="card-text">
+        {{ step.content }}
+    </p>
+    <div [formGroup]="form" (ngSubmit)="submitSubform()">
+        <div>
+            <label for="input_name" class="form-label">Your Name:</label>
+            <div id="input_name" class="input-group has-validation mb-3" formGroupName="name">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="input_name--first"
+                    formControlName="first"
+                    placeholder="First"
+                    required
+                />
+                <input
+                    type="text"
+                    class="form-control"
+                    id="input_name--last"
+                    formControlName="last"
+                    placeholder="Last"
+                    required
+                />
+                <span class="invalid-feedback">Please enter your name. </span>
+            </div>
+            <label for="input_company" class="form-label">Company:</label>
+            <div class="input-group mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="input_company"
+                    formControlName="company"
+                    placeholder="Company Name"
+                />
+            </div>
+
+            <label for="input_age" class="form-label">Age:</label>
+            <div class="input-group mb-3">
+                <select class="form-select" id="input_age" formControlName="age" aria-label="Select your age range">
+                    <option selected>Choose...</option>
+                    <option value="1">Under 18</option>
+                    <option value="2">18-24 years old</option>
+                    <option value="3">25-34 years old</option>
+                    <option value="4">35-44 years old</option>
+                    <option value="5">45-54 years old</option>
+                    <option value="6">55-64 years old</option>
+                    <option value="7">65-74 years old</option>
+                    <option value="8">75 years or older</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        Form status:
+                        <span
+                            [ngClass]="{
+                                'text-success': form.status === 'VALID',
+                                'text-danger': form.status === 'INVALID'
+                            }"
+                            >{{ form.status }}</span
+                        >
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-grid gap-2 col-6 mx-auto my-4">
+                    <button (click)="doChangeStep('prev')" routerLink="/" class="btn btn-secondary">Back</button>
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto my-4">
+                    <button
+                        type="submit"
+                        (click)="submitSubform(); doChangeStep('next')"
+                        routerLink="step-two"
+                        [class.disabled]="form.status !== 'VALID'"
+                        class="btn btn-primary"
+                    >
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

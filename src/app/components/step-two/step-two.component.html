@@ -1,1 +1,76 @@
-<p>step-two works!</p>
+<div *ngIf="step.progress > 0" class="card-header">
+    <div class="wizard">
+        <a [routerLink]="step.route" routerLinkActive="active" [title]="step.title">
+            <div class="progress">
+                <div
+                    class="progress-bar progress-bar-striped progress-bar-animated"
+                    role="progressbar"
+                    [ngStyle]="{ width: step.progress + '%' }"
+                    [innerText]="step.progress + '%'"
+                ></div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="card-body">
+    <div class="card-title">
+        <h3>{{ step.title }}</h3>
+    </div>
+    <p class="card-text">
+        {{ step.content }}
+    </p>
+    <div [formGroup]="form" (ngSubmit)="submitSubform()">
+        <div>
+            <label for="input_email" class="form-label">Email:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="email" id="input_email" />
+            </div>
+            <label for="input_phone" class="form-label">Phone:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="phone" id="input_phone" />
+            </div>
+            <label for="input_linkedin" class="form-label">LinkedIn:</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="linkedin-prefix">https://linkedin.com/in/</span>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="(optional)"
+                    formControlName="linkedin"
+                    aria-describedby="linkedin-prefix"
+                    id="input_linkedin"
+                />
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        Form status:
+                        <span
+                            [ngClass]="{
+                                'text-success': form.status === 'VALID',
+                                'text-danger': form.status === 'INVALID'
+                            }"
+                            >{{ form.status }}</span
+                        >
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-grid gap-2 col-6 mx-auto my-4">
+                    <button (click)="doChangeStep('prev')" routerLink="step-one" class="btn btn-secondary">Back</button>
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto my-4">
+                    <button
+                        type="submit"
+                        (click)="submitSubform(); doChangeStep('next')"
+                        routerLink="step-three"
+                        [class.disabled]="form.status !== 'VALID'"
+                        class="btn btn-primary"
+                    >
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

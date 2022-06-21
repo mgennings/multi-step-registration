@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StepOneComponent } from './components/step-one/step-one.component';
@@ -19,7 +19,7 @@ import { ConfirmComponent } from './pages/confirm/confirm.component';
         RegisterComponent,
         ConfirmComponent,
     ],
-    imports: [CommonModule, BrowserModule, AppRoutingModule],
+    imports: [CommonModule, BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
 })

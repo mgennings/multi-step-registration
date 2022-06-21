@@ -4,6 +4,7 @@ import { RegisterComponent } from './register.component';
 import { StepOneComponent } from '../../components/step-one/step-one.component';
 import { StepTwoComponent } from '../../components/step-two/step-two.component';
 import { StepThreeComponent } from '../../components/step-three/step-three.component';
+import { ConfirmComponent } from '../confirm/confirm.component';
 
 @NgModule({
     imports: [
@@ -15,6 +16,7 @@ import { StepThreeComponent } from '../../components/step-three/step-three.compo
                     { path: 'step-one', component: StepOneComponent },
                     { path: 'step-two', component: StepTwoComponent },
                     { path: 'step-three', component: StepThreeComponent },
+                    { path: 'confirm', component: ConfirmComponent },
                 ],
             },
         ]),
