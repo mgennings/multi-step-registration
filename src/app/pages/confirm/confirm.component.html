@@ -1,15 +1,11 @@
 <div *ngIf="step.progress > 0" class="card-header">
-    <div class="wizard">
-        <a [routerLink]="step.route" routerLinkActive="active" [title]="step.title">
-            <div class="progress">
-                <div
-                    class="progress-bar progress-bar-striped progress-bar-animated"
-                    role="progressbar"
-                    [ngStyle]="{ width: step.progress + '%' }"
-                    [innerText]="step.progress + '%'"
-                ></div>
-            </div>
-        </a>
+    <div class="progress">
+        <div
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            [ngStyle]="{ width: step.progress + '%' }"
+            [innerText]="step.progress + '%'"
+        ></div>
     </div>
 </div>
 <div class="card-body">
@@ -172,7 +168,7 @@
                 </p>
             </div>
         </div>
-        <div class="d-grid gap-2">
+        <div class="d-grid gap-2 mt-2 mb-4">
             <button
                 (click)="confirmForm.submit()"
                 [class.disabled]="form.status !== 'VALID'"
