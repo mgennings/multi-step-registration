@@ -9,10 +9,10 @@ export function forbiddenInputValidator(customReg: RegExp): ValidatorFn {
 }
 
 export function customMatchValidator(customReg: RegExp): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-      const passes = customReg.test(control.value);
-      return passes ? null : { forbiddenInput: { value: control.value } };
-  };
+    return (control: AbstractControl): ValidationErrors | null => {
+        const passes = customReg.test(control.value);
+        return passes ? null : { forbiddenInput: { value: control.value } };
+    };
 }
 
 @Directive({
