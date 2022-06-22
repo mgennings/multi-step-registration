@@ -23,7 +23,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ***
 If you would like to install this repo on your local machine for testing, do the following in Terminal (Mac user) 
 ```
-mkdir -p ~/Developer && cd ~/Developer && git clone https://github.com/m3digital/multi-step-registration.git && cd multi-step-registration && npm install && npm start
+mkdir -p ~/Developer
+cd ~/Developer
+git clone https://github.com/m3digital/multi-step-registration.git
+cd multi-step-registration
+npm install && ng serve
 ```
 ## Development server
 
