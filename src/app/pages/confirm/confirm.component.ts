@@ -52,6 +52,8 @@ export class ConfirmComponent implements OnInit {
     }
 
     submitForm() {
+        console.log('form submitted');
+        // use this output to tie in to larger application for later use
         this.formComplete.emit(this.form);
     }
 
