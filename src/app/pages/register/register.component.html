@@ -1,7 +1,7 @@
 <div class="container d-flex h-100 justify-content-center">
     <div class="row align-items-center">
         <div class="col-12 my-auto mx-auto">
-            <h1 class="h2 text-center">Multi-Step Registration WizardBuild</h1>
+            <h1 class="h2 mt-4 text-center">Multi-Step Registration WizardBuild</h1>
             <div class="card mt-4">
                 <ng-container [ngSwitch]="currentStep$ | async">
                     <form [formGroup]="onboardingForm" (ngSubmit)="onSubmit()">
