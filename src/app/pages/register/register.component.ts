@@ -1,8 +1,7 @@
-import { Component, AfterViewInit, HostListener, ChangeDetectorRef, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, HostListener, ChangeDetectorRef, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { filter } from 'rxjs/operators';
 import { Steps, StepType, StepContent } from '../../common/shared.model';
 
 @Component({
@@ -41,7 +40,7 @@ export class RegisterComponent implements OnInit {
         }
     }
 
-    steps = StepContent;
+    steps: Steps[] = StepContent;
 
     constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef, private route: Router) {}
 
