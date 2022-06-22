@@ -5,7 +5,7 @@ export interface Steps {
     progress: number;
 }
 
-export type StepType = 'register' | 'step-one' | 'step-two' | 'step-three' | 'confirm';
+export type StepType = 'register' | 'stepOne' | 'stepTwo' | 'stepThree' | 'confirm';
 
 export interface UserDetails {
     name: {
@@ -25,6 +25,39 @@ export interface UserDetails {
         zip: string;
     };
 }
+
+export const StepContent = [
+    {
+        title: 'Register',
+        route: 'register',
+        content: 'Begin your journey with us by entering your information.',
+        progress: 0,
+    },
+    {
+        title: 'Step 1: Basic Information',
+        route: 'step-one',
+        content: 'Enter your name, company, and age range below.',
+        progress: 0,
+    },
+    {
+        title: 'Step 2: Contact Information',
+        route: 'step-two',
+        content: 'Enter your contact information below.',
+        progress: 33,
+    },
+    {
+        title: 'Step 3: Account Information',
+        route: 'step-three',
+        content: 'Enter your address details below.',
+        progress: 66,
+    },
+    {
+        title: 'Complete!',
+        route: 'confirm',
+        content: "That's it! You're all set to go!",
+        progress: 100,
+    },
+];
 
 export const States = [
     'AK - Alaska',

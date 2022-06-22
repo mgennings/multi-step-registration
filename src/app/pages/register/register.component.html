@@ -24,42 +24,42 @@
                             </div>
                         </ng-container>
                         <app-step-one
-                            *ngSwitchCase="'step-one'"
+                            *ngSwitchCase="'stepOne'"
                             (itemReady)="loading = false"
                             [startingForm]="
                                 stepOneComplete
                                     ? this.onboardingForm.get('stepOne')
                                     : !loading && onboardingForm.get('stepOne')?.value
                             "
-                            (changeStep)="changeStep('step-one', $event)"
+                            (changeStep)="changeStep('stepOne', $event)"
                             (formInitialized)="initForm('stepOne', $event)"
                             (formComplete)="patchValue('stepOne', $event)"
                             [step]="steps[1]"
                         >
                         </app-step-one>
                         <app-step-two
-                            *ngSwitchCase="'step-two'"
+                            *ngSwitchCase="'stepTwo'"
                             (itemReady)="loading = false"
                             [startingForm]="
                                 stepTwoComplete
                                     ? this.onboardingForm.get('stepTwo')
                                     : !loading && onboardingForm.get('stepTwo')?.value
                             "
-                            (changeStep)="changeStep('step-two', $event)"
+                            (changeStep)="changeStep('stepTwo', $event)"
                             (formInitialized)="initForm('stepTwo', $event)"
                             (formComplete)="patchValue('stepTwo', $event)"
                             [step]="steps[2]"
                         >
                         </app-step-two>
                         <app-step-three
-                            *ngSwitchCase="'step-three'"
+                            *ngSwitchCase="'stepThree'"
                             (itemReady)="loading = false"
                             [startingForm]="
                                 stepThreeComplete
                                     ? this.onboardingForm.get('stepThree')
                                     : !loading && onboardingForm.get('stepThree')?.value
                             "
-                            (changeStep)="changeStep('step-three', $event)"
+                            (changeStep)="changeStep('stepThree', $event)"
                             (formInitialized)="initForm('stepThree', $event)"
                             (formComplete)="patchValue('stepThree', $event)"
                             [step]="steps[3]"

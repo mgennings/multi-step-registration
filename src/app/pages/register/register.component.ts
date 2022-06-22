@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { Steps, StepType } from '../../common/shared.model';
+import { Steps, StepType, StepContent } from '../../common/shared.model';
 
 @Component({
     selector: 'app-register',
@@ -25,13 +25,13 @@ export class RegisterComponent implements OnInit {
                 this.currentStepBs.next('register');
                 break;
             case '/register/step-one':
-                this.currentStepBs.next('step-one');
+                this.currentStepBs.next('stepOne');
                 break;
             case '/register/step-two':
-                this.currentStepBs.next('step-two');
+                this.currentStepBs.next('stepTwo');
                 break;
             case '/register/step-three':
-                this.currentStepBs.next('step-three');
+                this.currentStepBs.next('stepThree');
                 break;
             case '/register/confirm':
                 this.currentStepBs.next('confirm');
@@ -41,38 +41,7 @@ export class RegisterComponent implements OnInit {
         }
     }
 
-    steps: Steps[] = [
-        {
-            title: 'Register',
-            route: 'register',
-            content: 'Begin your journey with us by entering your information.',
-            progress: 0,
-        },
-        {
-            title: 'Step 1: Basic Information',
-            route: 'step-one',
-            content: 'Enter your name, company, and age range below.',
-            progress: 0,
-        },
-        {
-            title: 'Step 2: Contact Information',
-            route: 'step-two',
-            content: 'Enter your contact information below.',
-            progress: 33,
-        },
-        {
-            title: 'Step 3: Account Information',
-            route: 'step-three',
-            content: 'Enter your address details below.',
-            progress: 66,
-        },
-        {
-            title: 'Complete!',
-            route: 'confirm',
-            content: "That's it! You're all set to go!",
-            progress: 100,
-        },
-    ];
+    steps = StepContent;
 
     constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef, private route: Router) {}
 
@@ -95,33 +64,33 @@ export class RegisterComponent implements OnInit {
         switch (step) {
             case 'register':
                 if (direction === 'next') {
-                    this.currentStepBs.next('step-one');
+                    this.currentStepBs.next('stepOne');
                     break;
                 }
                 break;
-            case 'step-one':
+            case 'stepOne':
                 if (direction === 'prev') {
                     this.currentStepBs.next('register');
                     break;
                 }
                 if (direction === 'next') {
-                    this.currentStepBs.next('step-two');
+                    this.currentStepBs.next('stepTwo');
                     break;
                 }
                 break;
-            case 'step-two':
+            case 'stepTwo':
                 if (direction === 'prev') {
-                    this.currentStepBs.next('step-one');
+                    this.currentStepBs.next('stepOne');
                     break;
                 }
                 if (direction === 'next') {
-                    this.currentStepBs.next('step-three');
+                    this.currentStepBs.next('stepThree');
                     break;
                 }
                 break;
-            case 'step-three':
+            case 'stepThree':
                 if (direction === 'prev') {
-                    this.currentStepBs.next('step-two');
+                    this.currentStepBs.next('stepTwo');
                     break;
                 }
                 if (direction === 'next') {
@@ -131,7 +100,7 @@ export class RegisterComponent implements OnInit {
                 break;
             case 'confirm':
                 if (direction === 'prev') {
-                    this.currentStepBs.next('step-three');
+                    this.currentStepBs.next('stepThree');
                     break;
                 }
                 break;
