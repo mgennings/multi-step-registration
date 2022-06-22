@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Steps, States } from '../../common/shared.model';
+import { Steps, States, emailRegex, phoneRegex, zipRegex } from '../../common/shared.model';
+import { customMatchValidator } from '../../common/custom-validation.directive';
 
 @Component({
     selector: 'app-confirm',
@@ -26,18 +27,19 @@ export class ConfirmComponent implements OnInit {
         if (this.startingForm) {
             this.form = this.startingForm;
         } else {
+            // this will never actually be used, but it's here for reference
             this.form = this.fb.group({
                 stepOne: this.fb.group({
                     name: this.fb.group({
                         first: ['', Validators.required],
                         last: ['', Validators.required],
                     }),
-                    company: ['', Validators.required],
+                    company: [''],
                     age: ['', Validators.required],
                 }),
                 stepTwo: this.fb.group({
-                    email: ['', [Validators.required, Validators.email]],
-                    phone: ['', Validators.required],
+                    email: ['', [Validators.required, customMatchValidator(emailRegex)]],
+                    phone: ['', [Validators.required, customMatchValidator(phoneRegex)]],
                     linkedin: [''],
                 }),
                 stepThree: this.fb.group({
@@ -45,7 +47,7 @@ export class ConfirmComponent implements OnInit {
                     unit: [''],
                     city: ['', Validators.required],
                     state: ['', Validators.required],
-                    zip: ['', Validators.required],
+                    zip: ['', [Validators.required, customMatchValidator(zipRegex)]],
                 }),
             });
         }

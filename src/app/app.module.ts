@@ -9,6 +9,7 @@ import { StepTwoComponent } from './components/step-two/step-two.component';
 import { StepThreeComponent } from './components/step-three/step-three.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
+import { CustomValidationDirective } from './common/custom-validation.directive';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { ConfirmComponent } from './pages/confirm/confirm.component';
         StepThreeComponent,
         RegisterComponent,
         ConfirmComponent,
+        CustomValidationDirective,
     ],
     imports: [CommonModule, BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
     providers: [],

@@ -29,6 +29,7 @@
                     id="input_address"
                     formControlName="street"
                     placeholder="1234 Main St"
+                    required
                 />
             </div>
             <label for="input_address--2">Address 2</label>
@@ -43,18 +44,18 @@
             </div>
             <label for="input_city">City</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" formControlName="city" id="input_city" />
+                <input type="text" class="form-control" formControlName="city" id="input_city" required />
             </div>
             <label for="input_state">State</label>
             <div class="input-group mb-3">
-                <select id="input_state" class="form-control" formControlName="state">
+                <select id="input_state" class="form-control" formControlName="state" required>
                     <option value="" selected disabled>Choose...</option>
                     <option *ngFor="let state of states" [value]="state" [innerText]="state"></option>
                 </select>
             </div>
             <label for="input_zip">Zip</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" formControlName="zip" id="input_zip" />
+                <input type="text" class="form-control" formControlName="zip" id="input_zip" required />
             </div>
             <div class="row">
                 <div class="col-12">

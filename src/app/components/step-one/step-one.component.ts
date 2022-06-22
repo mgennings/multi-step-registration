@@ -31,7 +31,7 @@ export class StepOneComponent implements OnInit {
                     first: ['', Validators.required],
                     last: ['', Validators.required],
                 }),
-                company: ['', Validators.required],
+                company: [''],
                 age: ['', Validators.required],
             });
         }

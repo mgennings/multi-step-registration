@@ -2,12 +2,8 @@
     <div class="wizard">
         <a [routerLink]="step.route" routerLinkActive="active" [title]="step.title">
             <div class="progress">
-                <div
-                    class="progress-bar progress-bar-striped progress-bar-animated"
-                    role="progressbar"
-                    [ngStyle]="{ width: step.progress + '%' }"
-                    [innerText]="step.progress + '%'"
-                ></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                    [ngStyle]="{ width: step.progress + '%' }" [innerText]="step.progress + '%'"></div>
             </div>
         </a>
     </div>
@@ -19,57 +15,27 @@
     <p class="card-text">
         {{ step.content }}
     </p>
-    <form
-        [formGroup]="form"
-        action="https://getform.io/f/59a3d111-1f49-4d21-897f-2e4ca4a93d68"
-        method="POST"
-        #confirmForm
-    >
+    <form [formGroup]="form" action="https://getform.io/f/59a3d111-1f49-4d21-897f-2e4ca4a93d68" method="POST"
+        #confirmForm>
         <div formGroupName="stepOne">
             <label for="input_name" class="form-label">Your Name:</label>
             <div id="input_name" class="input-group has-validation mb-3" formGroupName="name">
-                <input
-                    type="text"
-                    class="form-control"
-                    id="input_name--first"
-                    name="first-name"
-                    formControlName="first"
-                    placeholder="First"
-                    required
-                />
-                <input
-                    type="text"
-                    class="form-control"
-                    id="input_name--last"
-                    name="last-name"
-                    formControlName="last"
-                    placeholder="Last"
-                    required
-                />
+                <input type="text" class="form-control" id="input_name--first" name="first-name" formControlName="first"
+                    placeholder="First" required />
+                <input type="text" class="form-control" id="input_name--last" name="last-name" formControlName="last"
+                    placeholder="Last" required />
                 <span class="invalid-feedback">Please enter your name. </span>
             </div>
             <label for="input_company" class="form-label">Company:</label>
             <div class="input-group mb-3">
-                <input
-                    type="text"
-                    class="form-control"
-                    id="input_company"
-                    name="company"
-                    formControlName="company"
-                    placeholder="Company Name"
-                />
+                <input type="text" class="form-control" id="input_company" name="company" formControlName="company"
+                    placeholder="Company Name" />
             </div>
 
             <label for="input_age" class="form-label">Age:</label>
             <div class="input-group mb-3">
-                <select
-                    class="form-select"
-                    id="input_age"
-                    name="age"
-                    formControlName="age"
-                    aria-label="Select your age range"
-                >
-                    <option selected>Choose...</option>
+                <select class="form-select" id="input_age" name="age" formControlName="age"
+                    aria-label="Select your age range" required>
                     <option value="1">Under 18</option>
                     <option value="2">18-24 years old</option>
                     <option value="3">25-34 years old</option>
@@ -78,92 +44,72 @@
                     <option value="6">55-64 years old</option>
                     <option value="7">65-74 years old</option>
                     <option value="8">75 years or older</option>
+                    <option value="9">Prefer not to say.</option>
                 </select>
             </div>
         </div>
         <div formGroupName="stepTwo">
             <label for="input_email" class="form-label">Email:</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="email" formControlName="email" id="input_email" />
+                <input type="text" class="form-control" name="email" formControlName="email" id="input_email"
+                    required />
             </div>
             <label for="input_phone" class="form-label">Phone:</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="phone" formControlName="phone" id="input_phone" />
+                <input type="text" class="form-control" name="phone" formControlName="phone" id="input_phone"
+                    required />
             </div>
             <label for="input_linkedin" class="form-label">LinkedIn:</label>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="linkedin-prefix">https://linkedin.com/in/</span>
-                <input
-                    type="text"
-                    class="form-control"
-                    placeholder="(optional)"
-                    name="linkedin"
-                    formControlName="linkedin"
-                    aria-describedby="linkedin-prefix"
-                    id="input_linkedin"
-                />
+                <input type="text" class="form-control" placeholder="(optional)" name="linkedin"
+                    formControlName="linkedin" aria-describedby="linkedin-prefix" id="input_linkedin" />
             </div>
         </div>
         <div formGroupName="stepThree">
             <label for="input_address">Address</label>
             <div class="input-group mb-3">
-                <input
-                    type="text"
-                    class="form-control"
-                    id="input_address"
-                    name="street"
-                    formControlName="street"
-                    placeholder="1234 Main St"
-                />
+                <input type="text" class="form-control" id="input_address" name="street" formControlName="street"
+                    placeholder="1234 Main St" required />
             </div>
             <label for="input_address--2">Address 2</label>
             <div class="input-group mb-3">
-                <input
-                    type="text"
-                    class="form-control"
-                    id="input_address--2"
-                    name="unit"
-                    formControlName="unit"
-                    placeholder="Apartment, studio, or floor"
-                />
+                <input type="text" class="form-control" id="input_address--2" name="unit" formControlName="unit"
+                    placeholder="Apartment, studio, or floor" />
             </div>
             <label for="input_city">City</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="city" formControlName="city" id="input_city" />
+                <input type="text" class="form-control" name="city" formControlName="city" id="input_city" required />
             </div>
             <label for="input_state">State</label>
             <div class="input-group mb-3">
-                <select id="input_state" class="form-control" name="state" formControlName="state">
+                <select id="input_state" class="form-control" name="state" formControlName="state" required>
                     <option *ngFor="let state of states" [value]="state" [innerText]="state"></option>
                 </select>
             </div>
             <label for="input_zip">Zip</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="zip" formControlName="zip" id="input_zip" />
+                <input type="text" class="form-control" name="zip" formControlName="zip" id="input_zip" required />
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <p>
                     Form status:
-                    <span
-                        [ngClass]="{
+                    <span [ngClass]="{
                             'text-success': form.status === 'VALID',
                             'text-danger': form.status === 'INVALID'
-                        }"
-                        >{{ form.status }}</span
-                    >
+                        }">{{ form.status }}</span>
                 </p>
             </div>
         </div>
         <div class="d-grid gap-2">
-            <button
-                (click)="confirmForm.submit()"
-                [class.disabled]="form.status !== 'VALID'"
-                type="submit"
-                class="btn btn-primary"
-            >
+            <button (click)="confirmForm.submit()" [class.disabled]="form.status !== 'VALID'" type="submit"
+                class="btn btn-primary">
                 Submit
+            </button>
+            <button (click)="doChangeStep('prev')" routerLink="step-three" class="btn btn-secondary">
+                Go Back
             </button>
         </div>
     </form>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Steps, States } from '../../common/shared.model';
+import { Steps, States, zipRegex } from '../../common/shared.model';
+import { customMatchValidator } from '../../common/custom-validation.directive';
 
 @Component({
     selector: 'app-step-three',
@@ -32,7 +33,7 @@ export class StepThreeComponent implements OnInit {
                 unit: [''],
                 city: ['', Validators.required],
                 state: ['', Validators.required],
-                zip: ['', Validators.required],
+                zip: ['', [Validators.required, customMatchValidator(zipRegex)]],
             });
         }
         this.formInitialized.emit(this.form);

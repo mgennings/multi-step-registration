@@ -48,14 +48,14 @@
                     class="form-control"
                     id="input_company"
                     formControlName="company"
-                    placeholder="Company Name"
+                    placeholder="(optional)"
                 />
             </div>
 
             <label for="input_age" class="form-label">Age:</label>
             <div class="input-group mb-3">
-                <select class="form-select" id="input_age" formControlName="age" aria-label="Select your age range">
-                    <option selected>Choose...</option>
+                <select class="form-select" id="input_age" formControlName="age" aria-label="Select your age range" required>
+                    <option value='' selected disabled>Choose...</option>
                     <option value="1">Under 18</option>
                     <option value="2">18-24 years old</option>
                     <option value="3">25-34 years old</option>
@@ -64,6 +64,7 @@
                     <option value="6">55-64 years old</option>
                     <option value="7">65-74 years old</option>
                     <option value="8">75 years or older</option>
+                    <option value="9">Prefer not to say.</option>
                 </select>
             </div>
             <div class="row">

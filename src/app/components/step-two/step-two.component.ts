@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Steps } from '../../common/shared.model';
+import { customMatchValidator } from '../../common/custom-validation.directive';
+import { Steps, phoneRegex, emailRegex } from '../../common/shared.model';
 
 @Component({
     selector: 'app-step-two',
@@ -26,8 +27,8 @@ export class StepTwoComponent implements OnInit {
             this.form = this.startingForm;
         } else {
             this.form = this.fb.group({
-                email: ['', [Validators.required, Validators.email]],
-                phone: ['', Validators.required],
+                email: ['', [Validators.required, customMatchValidator(emailRegex)]],
+                phone: ['', [Validators.required, customMatchValidator(phoneRegex)]],
                 linkedin: [''],
             });
         }
