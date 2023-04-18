@@ -8,7 +8,7 @@ import { CustomValidationDirective, forbiddenInputValidator } from './custom-val
 @Component({
     template: `
         <form>
-            <input type="text" name="inputValue" appCustomValidation [ngModel]="inputValue" [ngModelOptions]="{ standalone: true }" />
+            <input type="text" name="inputValue" [appCustomValidation]="forbiddenInput" [ngModel]="inputValue" [ngModelOptions]="{ standalone: true }" />
         </form>
     `
 })
@@ -39,21 +39,29 @@ describe('CustomValidationDirective', () => {
 
     it('should validate forbidden input', () => {
         component.inputValue = 'foo';
-        component.forbiddenInput = 'bar'; // Update this line
+        component.forbiddenInput = 'bar';
         fixture.detectChanges();
         const directive = inputEl.injector.get(CustomValidationDirective) as CustomValidationDirective;
-        const validator = forbiddenInputValidator(/bar/);
-        const error = validator(new FormControl(component.inputValue));
-        expect(error).toEqual({ forbiddenInput: { value: 'foo' } });
-    });
-    
-    it('should validate matching input', () => {
+        const validationResult = directive.validate(new FormControl(component.inputValue));
+        expect(validationResult).toEqual({ forbiddenInput: { value: 'foo' } });
+      });      
+
+    it('should not validate when forbiddenInput is falsy', () => {
         component.inputValue = 'foo';
-        component.forbiddenInput = 'foo'; // Update this line
+        component.forbiddenInput = ''; // Set to an empty string (falsy value)
         fixture.detectChanges();
         const directive = inputEl.injector.get(CustomValidationDirective) as CustomValidationDirective;
-        const validator = forbiddenInputValidator(/foo/);
-        const error = validator(new FormControl(component.inputValue));
-        expect(error).toBeNull();
-    });
+        const validationResult = directive.validate(new FormControl(component.inputValue));
+        expect(validationResult).toBeNull();
+      });
+      
+    
+      it('should validate matching input', () => {
+        component.inputValue = 'foo';
+        component.forbiddenInput = 'foo';
+        fixture.detectChanges();
+        const directive = inputEl.injector.get(CustomValidationDirective) as CustomValidationDirective;
+        const validationResult = directive.validate(new FormControl(component.inputValue));
+        expect(validationResult).toBeNull();
+      });
 });

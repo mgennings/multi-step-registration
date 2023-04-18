@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConfirmComponent } from './confirm.component';
 import { Steps, States, emailRegex, phoneRegex, zipRegex } from '../../common/shared.model';
+import { FormBuilder, Validators } from '@angular/forms';
 
 describe('ConfirmComponent', () => {
   let component: ConfirmComponent;
@@ -77,4 +78,29 @@ describe('ConfirmComponent', () => {
     const select = compiled.querySelector('#input_state');
     expect(select.children.length).toEqual(States.length);
   });
+
+  it('should use startingForm when provided', () => {
+    const testFormBuilder = new FormBuilder();
+    const startingForm = testFormBuilder.group({
+        name: testFormBuilder.group({
+            first: ['John', Validators.required],
+            last: ['Doe', Validators.required],
+        }),
+        company: ['Test Company'],
+        age: ['30', Validators.required],
+        email: ['test@gmail.com', Validators.required],
+        phone: ['123-456-7890', Validators.required],
+        linkedin: ['https://www.linkedin.com/in/test'],
+        street: ['123 Test St'],
+        unit: [''],
+        city: ['Test City', Validators.required],
+        state: ['TX', Validators.required],
+        zip: ['12345', Validators.required],
+    });
+
+    component.startingForm = startingForm;
+    component.ngOnInit();
+    expect(component.form).toEqual(startingForm);
+});
+
 });

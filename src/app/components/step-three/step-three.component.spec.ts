@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StepThreeComponent } from './step-three.component';
+import { FormBuilder, Validators } from '@angular/forms';
 
 describe('StepThreeComponent', () => {
     let component: StepThreeComponent;
@@ -57,4 +58,20 @@ describe('StepThreeComponent', () => {
         component.doChangeStep('next');
         expect(changeStepSpy).toHaveBeenCalledWith('next');
     });
+
+    it('should use startingForm when provided', () => {
+        const testFormBuilder = new FormBuilder();
+        const startingForm = testFormBuilder.group({
+            street: ['123 Test Street', Validators.required],
+            unit: [''],
+            city: ['Test City', Validators.required],
+            state: ['Test State', Validators.required],
+            zip: ['78702', Validators.required],
+        });
+    
+        component.startingForm = startingForm;
+        component.ngOnInit();
+        expect(component.form).toEqual(startingForm);
+    });
+    
 });

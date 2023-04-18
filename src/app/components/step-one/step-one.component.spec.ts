@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StepOneComponent } from './step-one.component';
+import { FormBuilder, Validators } from '@angular/forms';
 
 describe('StepOneComponent', () => {
     let component: StepOneComponent;
@@ -55,4 +56,28 @@ describe('StepOneComponent', () => {
         component.doChangeStep('next');
         expect(changeStepSpy).toHaveBeenCalledWith('next');
     });
+
+    it('should use startingForm when provided', () => {
+        const testFormBuilder = new FormBuilder();
+        const startingForm = testFormBuilder.group({
+            name: testFormBuilder.group({
+                first: ['John', Validators.required],
+                last: ['Doe', Validators.required],
+            }),
+            company: ['Test Company'],
+            age: ['30', Validators.required],
+        });
+    
+        component.startingForm = startingForm;
+        component.ngOnInit();
+        expect(component.form).toEqual(startingForm);
+    });
+
+    it('should emit stepReady on init', () => {
+        const stepReadySpy = jest.spyOn(component.stepReady, 'emit');
+        component.ngOnInit();
+        expect(stepReadySpy).toHaveBeenCalled();
+    });
+    
+    
 });
