@@ -4,7 +4,7 @@
             class="progress-bar progress-bar-striped progress-bar-animated"
             role="progressbar"
             [ngStyle]="{ width: step.progress + '%' }"
-            [innerText]="step.progress + '%'"
+            [innerHTML]="step.progress + '%'"
         ></div>
     </div>
 </div>
@@ -46,7 +46,7 @@
             <div class="input-group mb-3">
                 <select id="input_state" class="form-control" formControlName="state" required>
                     <option value="" selected disabled>Choose...</option>
-                    <option *ngFor="let state of states" [value]="state" [innerText]="state"></option>
+                    <option *ngFor="let state of states" [value]="state" [innerHTML]="state"></option>
                 </select>
             </div>
             <label for="input_zip">Zip</label>
