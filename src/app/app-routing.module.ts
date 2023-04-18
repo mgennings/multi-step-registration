@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterRoutingModule } from './pages/register/register-routing.module';
 
-const routes: Routes = [
+export const routes: Routes = [
     { path: '', redirectTo: 'register', pathMatch: 'full' },
     { path: 'register', loadChildren: () => RegisterRoutingModule },
 ];

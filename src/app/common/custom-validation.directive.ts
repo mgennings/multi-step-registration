@@ -3,7 +3,7 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorF
 
 export function forbiddenInputValidator(customReg: RegExp): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-        const forbidden = customReg.test(control.value);
+        const forbidden = !customReg.test(control.value);
         return forbidden ? { forbiddenInput: { value: control.value } } : null;
     };
 }
@@ -23,6 +23,6 @@ export class CustomValidationDirective implements Validator {
     @Input('appCustomValidation') forbiddenInput = '';
 
     validate(control: AbstractControl): ValidationErrors | null {
-        return this.forbiddenInput ? forbiddenInputValidator(new RegExp(this.forbiddenInput, 'm'))(control) : null;
+        return this.forbiddenInput ? forbiddenInputValidator(new RegExp(this.forbiddenInput))(control) : null;
     }
 }
