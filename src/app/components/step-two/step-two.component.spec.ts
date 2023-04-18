@@ -64,10 +64,9 @@ describe('StepTwoComponent', () => {
             phone: ['888-888-8888', Validators.required],
             linkedin: ['mgennings'],
         });
-    
+
         component.startingForm = startingForm;
         component.ngOnInit();
         expect(component.form).toEqual(startingForm);
     });
-    
 });

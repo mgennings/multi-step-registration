@@ -67,7 +67,7 @@ describe('StepOneComponent', () => {
             company: ['Test Company'],
             age: ['30', Validators.required],
         });
-    
+
         component.startingForm = startingForm;
         component.ngOnInit();
         expect(component.form).toEqual(startingForm);
@@ -78,6 +78,4 @@ describe('StepOneComponent', () => {
         component.ngOnInit();
         expect(stepReadySpy).toHaveBeenCalled();
     });
-    
-    
 });

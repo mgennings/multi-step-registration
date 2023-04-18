@@ -86,13 +86,13 @@ describe('RegisterComponent', () => {
         expect(component.stepTwoComplete).toBe(false);
         expect(component.stepThreeComplete).toBe(false);
     });
-    
+
     it('should not submit the form when onSubmit() is called', () => {
         jest.spyOn(console, 'log');
         component.onSubmit();
         expect(console.log).toHaveBeenCalledWith('Submitted!');
     });
-    
+
     it('should set the control for the given form name in initForm()', () => {
         const formGroup = new FormBuilder().group({
             field: [''],
@@ -100,7 +100,7 @@ describe('RegisterComponent', () => {
         component.initForm('stepOne', formGroup);
         expect(component.onboardingForm.get('stepOne')).toBe(formGroup);
     });
-    
+
     it('should navigate between steps in changeStep()', () => {
         const currentStep$ = (component as any).currentStepBs as BehaviorSubject<string>;
         component.changeStep('register', 'next');
@@ -132,45 +132,44 @@ describe('RegisterComponent', () => {
             stepThree: null,
         });
     });
-    
+
     it('should call detectChanges on ChangeDetectorRef after view init', () => {
         const detectChangesSpy = jest.spyOn(component['cdr'], 'detectChanges');
         component.ngAfterViewInit();
         expect(detectChangesSpy).toHaveBeenCalled();
-    });    
+    });
 
     it('should not change step when changeStep is called with invalid direction in stepOne', () => {
         const currentStep$ = (component as any).currentStepBs as BehaviorSubject<string>;
         const initialStep = currentStep$.getValue();
         component.changeStep('stepOne', 'invalidDirection');
         expect(currentStep$.getValue()).toEqual(initialStep);
-      });
-      
-      it('should not change step when changeStep is called with invalid direction in stepTwo', () => {
+    });
+
+    it('should not change step when changeStep is called with invalid direction in stepTwo', () => {
         const currentStep$ = (component as any).currentStepBs as BehaviorSubject<string>;
         currentStep$.next('stepTwo');
         const initialStep = currentStep$.getValue();
         component.changeStep('stepTwo', 'invalidDirection');
         expect(currentStep$.getValue()).toEqual(initialStep);
-      });
-      
-      it('should not change step when changeStep is called with invalid direction in stepThree', () => {
+    });
+
+    it('should not change step when changeStep is called with invalid direction in stepThree', () => {
         const currentStep$ = (component as any).currentStepBs as BehaviorSubject<string>;
         currentStep$.next('stepThree');
         const initialStep = currentStep$.getValue();
         component.changeStep('stepThree', 'invalidDirection');
         expect(currentStep$.getValue()).toEqual(initialStep);
-      });
+    });
 
-        it('should not change step when changeStep is called with invalid direction in confirm', () => {
+    it('should not change step when changeStep is called with invalid direction in confirm', () => {
         const currentStep$ = (component as any).currentStepBs as BehaviorSubject<string>;
         currentStep$.next('confirm');
         const initialStep = currentStep$.getValue();
         component.changeStep('confirm', 'invalidDirection');
         expect(currentStep$.getValue()).toEqual(initialStep);
-        });
-      
-    
+    });
+
     describe('changeStep', () => {
         it('should navigate to the next step', () => {
             const currentStep$ = (component as any).currentStepBs as BehaviorSubject<string>;
@@ -182,10 +181,9 @@ describe('RegisterComponent', () => {
             expect(currentStep$.getValue()).toEqual('stepThree');
             component.changeStep('stepThree', 'next');
             expect(currentStep$.getValue()).toEqual('confirm');
-          });
+        });
 
-
-          it('should navigate to the previous step', () => {
+        it('should navigate to the previous step', () => {
             const currentStep$ = (component as any).currentStepBs as BehaviorSubject<string>;
             component.changeStep('stepOne', 'prev');
             expect(currentStep$.getValue()).toEqual('register');
@@ -195,7 +193,7 @@ describe('RegisterComponent', () => {
             expect(currentStep$.getValue()).toEqual('stepTwo');
             component.changeStep('confirm', 'prev');
             expect(currentStep$.getValue()).toEqual('stepThree');
-          });
+        });
 
         it('should not navigate if direction is not valid', () => {
             jest.spyOn(router, 'navigate');
@@ -217,7 +215,7 @@ describe('RegisterComponent', () => {
     describe('patchValue', () => {
         it('should set the form value for the given key and update the corresponding completion status', () => {
             const formGroup = new FormBuilder().group({
-              field: ['test'],
+                field: ['test'],
             });
             // step one
             component.patchValue('stepOne', formGroup);
@@ -231,7 +229,7 @@ describe('RegisterComponent', () => {
             component.patchValue('stepThree', formGroup);
             expect(component.stepThreeComplete).toBe(true);
             expect(component.onboardingForm.get('stepThree')?.value).toEqual(formGroup);
-          });
+        });
     });
 
     describe('onPopState', () => {
@@ -244,8 +242,8 @@ describe('RegisterComponent', () => {
                 component.onPopState();
                 const currentStep$ = (component as any).currentStepBs as BehaviorSubject<string>;
                 return currentStep$.getValue();
-            };            
-    
+            };
+
             expect(setCurrentStep('/register')).toEqual('register');
             expect(setCurrentStep('/register/step-one')).toEqual('stepOne');
             expect(setCurrentStep('/register/step-two')).toEqual('stepTwo');
@@ -254,6 +252,4 @@ describe('RegisterComponent', () => {
             expect(setCurrentStep('/register/nonexistent')).toEqual('register');
         });
     });
-    
-    
 });

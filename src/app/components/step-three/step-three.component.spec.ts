@@ -68,10 +68,9 @@ describe('StepThreeComponent', () => {
             state: ['Test State', Validators.required],
             zip: ['78702', Validators.required],
         });
-    
+
         component.startingForm = startingForm;
         component.ngOnInit();
         expect(component.form).toEqual(startingForm);
     });
-    
 });
