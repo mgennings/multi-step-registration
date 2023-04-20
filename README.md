@@ -51,6 +51,18 @@ The project uses [Jest](https://jestjs.io/docs/getting-started) for running unit
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Contributing
+
+We welcome contributions to the Multi-Step Registration project. If you would like to contribute, please follow these steps:
+
+1. Fork the repository on GitHub.
+2. Create a feature branch for your changes (`git checkout -b feature/my-feature`).
+3. Commit your changes, following our commit message guidelines.
+4. Push your changes to your feature branch on your fork (`git push origin feature/my-feature`).
+5. Create a pull request from your feature branch to the main repository's `main` or `master` branch.
+
+Please ensure that your code follows our coding standards and includes appropriate tests and documentation. If you need help or have any questions, feel free to create an issue on GitHub or reach out to the maintainers.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
